@@ -5,7 +5,7 @@
 SELECT
 customers.customer_name AS Customer,
 --subscriptions.subscription_length*subscriptions.price_per_month AS "Amount Due"
-  '$' printf('%.2f', subscriptions.subscription_length * subscriptions.price_per_month) AS "Amount Due"
+  '$' || printf('%.2f', subscriptions.subscription_length * subscriptions.price_per_month) AS "Amount Due"
 FROM orders
 LEFT JOIN customers ON orders.customer_id = customers.customer_id
 LEFT JOIN subscriptions ON orders.subscription_id = subscriptions.subscription_id
